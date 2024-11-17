@@ -96,19 +96,19 @@ class ProductsController extends Controller
      * @param  \App\Models\product  $product
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, product $product)
+    public function update(Request $request)
     {
-         //return $request;
+        // return $request;
             $id = section::where('section_name' , $request->section_name)->first()->id;
-            $Products = Product::findOrFail($request->section_id);
-            $Products ->update([
-                'Product_name' => $request -> Product_name,
+             $product = Product::findOrFail($request->pro_id);
+            $product ->update([
+                'product_name' => $request -> product_name,
                 'description'  => $request -> description ,
                 'section_id'   => $id,
             ]);
 
-            session() -> flash('Edit' , 'تمالتعديل بنجاح ');
-            return back();
+            session() -> flash('Add' , 'تم التعديل بنجاح ');
+            return redirect('/products');
 
     }
 
@@ -118,8 +118,17 @@ class ProductsController extends Controller
      * @param  \App\Models\product  $product
      * @return \Illuminate\Http\Response
      */
-    public function destroy(product $product)
+    public function destroy(Request $request)
     {
-        //
+      // return $request;
+       $id = $request->pro_id;
+       $product = Product::findorfail($id);
+       if (!$product) {
+        return redirect('/products')->with('error', 'المنتج غير موجود.');
+    }else{
+        $product->delete();
+        session() -> flash('Add' , 'تم الحذف بنجاح ');
+        return redirect('/products');
+    }
     }
 }

@@ -157,7 +157,7 @@
                                 <span aria-hidden="true">&times;</span>
                             </button>
                         </div>
-                        <form action="{{ route('products.update', ['id' => $product->id]) }}" method="post"
+                        <form action="products/update" method="post"
                             autocomplete="off">
                             {{ method_field('patch') }}
                             {{ csrf_field() }}
@@ -205,7 +205,7 @@
                                 <span aria-hidden="true">&times;</span>
                             </button>
                         </div>
-                        <form action="{{ route('products.destroy', $product->id) }}" method="post">
+                        <form action="products/destroy" method="post">
                             {{ method_field('delete') }}
                             {{ csrf_field() }}
                             <div class="modal-body">
