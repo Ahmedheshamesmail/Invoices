@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\product;
 use Illuminate\Http\Request;
 use App\Models\section;
-class ProductController extends Controller
+class ProductsController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,7 +15,8 @@ class ProductController extends Controller
     public function index()
     {
         $sections =section::all();
-        $products = Product::with('section')->get();
+        // $products = Product::with('section')->get();
+        $products = product::all();
         return view('products.products',compact('sections' ,'products'));
     }
 
@@ -97,7 +98,18 @@ class ProductController extends Controller
      */
     public function update(Request $request, product $product)
     {
-        //
+         //return $request;
+            $id = section::where('section_name' , $request->section_name)->first()->id;
+            $Products = Product::findOrFail($request->section_id);
+            $Products ->update([
+                'Product_name' => $request -> Product_name,
+                'description'  => $request -> description ,
+                'section_id'   => $id,
+            ]);
+
+            session() -> flash('Edit' , 'تمالتعديل بنجاح ');
+            return back();
+
     }
 
     /**
