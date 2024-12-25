@@ -7,6 +7,7 @@ use App\Http\Controllers\SectionsController;
 use App\Http\Controllers\ProductsController;
 use Illuminate\Support\Facades\Auth;
 
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -31,5 +32,5 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::resource('invoices', InvoicesController::class);
 Route::resource('sections', SectionsController::class);
 Route::resource('products', ProductsController::class);
-
+Route::get('/section/{id}', [InvoicesController::class, 'getproducts']);
 Route::get('/{id}', [AdminController::class, 'index']);

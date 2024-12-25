@@ -210,7 +210,7 @@
             dateFormat: 'yy-mm-dd'
         }).val();
     </script>
-
+{{--------------------------------------- Ajax Script -----------------------------------------------}}
     <script>
         $(document).ready(function() {
             $('select[name="Section"]').on('change', function() {
@@ -236,7 +236,7 @@
 
         });
     </script>
-
+{{--------------------------------------- Ajax Script -----------------------------------------------}}
 
     <script>
         function myFunction() {
