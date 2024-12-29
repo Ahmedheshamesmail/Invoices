@@ -10,8 +10,7 @@ class CreateInvoicesDetailsTable extends Migration
      * Run the migrations.
      *
      * @return void
-     */
-    public function up()
+     */public function up()
     {
         Schema::create('invoices_details', function (Blueprint $table) {
             $table->id();
@@ -21,7 +20,7 @@ class CreateInvoicesDetailsTable extends Migration
             $table->string('product', 50);
             $table->string('Section', 999);
             $table->string('Status', 50);
-            $table->integer('Value_Status');
+            $table->integer('Value_Status')->default('غير مدفوعة');
             $table->date('Payment_Date')->nullable();
             $table->text('note')->nullable();
             $table->string('user',300);
