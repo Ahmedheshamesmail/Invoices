@@ -25,4 +25,8 @@ class invoice extends Model
         'Payment_Date',
     ];
     protected $dates = ['deleted_at'];
+    public function section()
+{
+    return $this->belongsTo(Section::class, 'section_id');
+}
 }

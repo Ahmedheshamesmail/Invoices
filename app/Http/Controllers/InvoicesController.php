@@ -19,7 +19,8 @@ class InvoicesController extends Controller
      */
     public function index()
     {
-        return view('invoices.invoices');
+        $invoices = invoice::all();
+        return view('invoices.invoices', compact('invoices'));
     }
 
     /**
@@ -42,6 +43,22 @@ class InvoicesController extends Controller
     public function store(Request $request)
     {
         // return $request;
+        // {
+        //     "_token": "vZbr20BhQl13s9NQwZIIy7PrMubb2g2gBtgbkTjL",
+        //     "invoice_number": "1121",
+        //     "invoice_Date": "2024-12-29",
+        //     "Due_date": "2024-12-29",
+        //     "Section": "1",
+        //     "product": "العقود الأجلة",
+        //     "Amount_collection": "50000",
+        //     "Amount_Commission": "15000",
+        //     "Discount": "1000",
+        //     "Rate_VAT": "5%",
+        //     "Value_VAT": "700.00",
+        //     "Total": "14700.00",
+        //     "note": "ييبيبيبيبي",
+        //     "pic": {}
+        // }
         $invoice = invoice::create([
             'invoice_number' => $request->invoice_number,
             'invoice_Date' => $request->invoice_Date,
